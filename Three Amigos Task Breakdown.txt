@@ -1,0 +1,70 @@
+REQUIREMENTS
+----------------------------------
+--Provider Intake Process
+        --Setup subscription -- ~10min
+	--Process to publish randomly generated requests
+		--Build event namespace (i.e. cluster)  -- ~3min
+                  -> Name must be globally unique -- can't all use the same name
+                  -> Pricing tier??
+                  -> After creation, anything to highlight on resource?
+                  -> Todd sees "Resource not found" instead of 1 or more graphs
+		--Build event hub (i.e. topic) --1 min
+                  -> Create Shared Access Policy now or later???
+		--Create timer-based Azure Function: ~30 min
+			->Name???
+                        ->Every minute: * * * * *
+                        ->Nuget: Azure.Messaging.EventHubs
+			->VPN: Cigna should disconnect from network
+			--Must be able to adjust frequency
+			--Must be able to adjust number of events produced at each interval
+		--Define what a request is
+		--Build randomization functionality to create requests
+		--Build event producer
+		--Deploy Azure Function
+--Review Process
+	--Automated
+		--Determining approval status
+			--Observer for new request event
+			--Randomizer to approve some requests but not others
+		--Workflow notification regarding need for hands-on MD review
+			--Build event hub for no-decision
+			--Build producer for no-decision events
+		--Communicate approvals to decision notification process
+			--Build event hub for decision
+			--Build producer for decision events
+	--Hands-On
+		--Routing process for getting a request to a particular doctor
+			--Create Routing app service
+			--Build observer for no-decision events
+			--Build observer for Get Request command event
+			--Build Get Next functionality
+				--Order by time remaining & status
+				--Mark request as assigned ???
+			--Deploy Routing Service
+		--Way for doctors to view request details
+			--Create UI
+			--Build Header
+				--Three Amigos logo
+			--Build login screen
+				--field to enter username
+				--submit button
+			--Landing Page
+				--Get Next Button
+					--Produce Get Request command event
+			--Display Request
+		--Way for doctors to submit a decision
+			--Approve/Deny Buttons
+				--Produce Decision command event
+			--Decision Submitted Confirmation
+			--Route to Landing Page
+		--Communicate doctor decision to Decision Notification process
+			--Observer for Decision command event
+			--Producer for Request Decided event
+
+
+----------------------------------
+POTENTIAL FUTURE REQUIREMENTS
+----------------------------------
+--Comminucation between clinicians and providers
+--Add support for new role (e.g. nurse)
+--Internal Dashboard
