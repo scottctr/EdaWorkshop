@@ -1,0 +1,82 @@
+﻿using Azure.Messaging.EventHubs;
+using Azure.Messaging.EventHubs.Processor;
+using Azure.Storage.Blobs;
+using Domain;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Text.Json;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace RoutingService
+{
+    class Program
+    {
+        private static Dictionary<int, RequestForService> _requests = new();
+        private static int _requestId = 1;
+
+        static async Task Main(string[] args)
+        {
+            //Listen to NotDecided event
+            var cancellationSource = new CancellationTokenSource();
+            cancellationSource.CancelAfter(TimeSpan.FromMinutes(1));
+
+            var storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=edaworkshopstorage;AccountKey=nec/q8UNus5XcmuJP+4M1fmJtmHMt4q5uUjW0jVqNUPKIb+KWXb6Kx1ST4xpwfjW0jUgiQZ7Gv4N6fiQAAlMZQ==;EndpointSuffix=core.windows.net";
+            var blobContainerName = "routernotdecidedconsumer";
+
+            var eventHubsConnectionString = "Endpoint=sb://edaworkshop.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=nlXMPx+mAh7XCd4f4xkn1MKK691X1FvQm7jof6q4yM8=";
+            var eventHubName = "requestnotdecided";
+            var consumerGroup = "routingconsumer";
+
+            var storageClient = new BlobContainerClient(storageConnectionString, blobContainerName);
+            var processor = new EventProcessorClient(storageClient, consumerGroup, eventHubsConnectionString, eventHubName);
+
+            processor.ProcessEventAsync += processEventHandler;
+            processor.ProcessErrorAsync += processErrorHandler;
+
+            await processor.StartProcessingAsync(cancellationSource.Token);
+
+            try
+            {
+                // The processor performs its work in the background; block until cancellation
+                // to allow processing to take place.
+                await Task.Delay(Timeout.Infinite, cancellationSource.Token);
+            }
+            catch (TaskCanceledException)
+            {
+                // This is expected when the delay is canceled.
+                Console.WriteLine("Cancelled");
+            }
+
+            try
+            {
+                await processor.StopProcessingAsync(cancellationSource.Token);
+            }
+            finally
+            {
+                // To prevent leaks, the handlers should be removed when processing is complete.
+                processor.ProcessEventAsync -= processEventHandler;
+                processor.ProcessErrorAsync -= processErrorHandler;
+            }
+        }
+
+        private static async Task processEventHandler(ProcessEventArgs eventArgs)
+        {
+            string messageBody = Encoding.UTF8.GetString(eventArgs.Data.Body.ToArray());
+
+            var rfs = JsonSerializer.Deserialize<RequestForService>(messageBody);
+            _requests.Add(_requestId++, rfs);
+
+            Console.WriteLine("Router received non-decision request: " + messageBody);
+
+            await eventArgs.UpdateCheckpointAsync(eventArgs.CancellationToken);
+        }
+
+        private static Task processErrorHandler(ProcessErrorEventArgs eventArgs)
+        {
+            //!!!!
+            return Task.CompletedTask;
+        }
+    }
+}

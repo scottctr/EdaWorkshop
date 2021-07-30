@@ -1,3 +1,7 @@
+-> Create single VS solution with all projects???
+-> RFS: Needs unique ID
+-> RFS: Use better names
+
 REQUIREMENTS
 ----------------------------------
 --Provider Intake Process
@@ -20,11 +24,15 @@ REQUIREMENTS
 		--Define what a request is
 		--Build randomization functionality to create requests
 		--Build event producer
-		--Deploy Azure Function
+		--Deploy Azure Function: ~15 min -- we don't HAVE to do this.
 --Review Process
 	--Automated
-		--Determining approval status
+		--Determining approval status: ~30 min
 			--Observer for new request event
+                          -> Note that we enter name of connect string varible
+                          -> Event hub is actual event hub name
+                          -> Be careful with nuget package versions
+                          -> Don't forget VPN can prevent getting to Azure
 			--Randomizer to approve some requests but not others
 		--Workflow notification regarding need for hands-on MD review
 			--Build event hub for no-decision
@@ -35,6 +43,9 @@ REQUIREMENTS
 	--Hands-On
 		--Routing process for getting a request to a particular doctor
 			--Create Routing app service
+                          -> console app ok???
+                          -> requires storage account to store consumer bookmark?
+                             ??? should already have one from previous app publishing
 			--Build observer for no-decision events
 			--Build observer for Get Request command event
 			--Build Get Next functionality
