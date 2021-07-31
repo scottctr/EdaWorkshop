@@ -16,16 +16,18 @@ namespace ProviderTransferServiceFunction
         private static string _connectionString = "!!!";
         private static EventHubProducerClient _publisher;
 
+        // For timer trigger syntax, see https://github.com/atifaziz/NCrontab/wiki/Crontab-Expression
+        // "* * * * * *" fires every second
+        // "* * * * *" fires every minute
         [FunctionName("Function1")]
         public static async void Run([TimerTrigger("* * * * * *")]TimerInfo myTimer, ILogger log, ExecutionContext context)
         {
             var config = GetConfig(context);
-            //Console.WriteLine("name: " + config["name"]);
 
-
-            log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
             _publisher = new EventHubProducerClient(_connectionString);
 
+            // We can set batchSize to send more requests per iteration and demo scalability 
+            // Don't forget to set batchSize in local.settings.json and publish settings
             var batchSize = int.Parse(config["batchSize"]);
             await _publisher.SendAsync(GetRequests(batchSize));
         }
