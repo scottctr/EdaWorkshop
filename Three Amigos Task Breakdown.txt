@@ -1,6 +1,4 @@
 -> Create single VS solution with all projects???
--> RFS: Needs unique ID
--> RFS: Use better names
 
 REQUIREMENTS
 ----------------------------------
@@ -9,17 +7,16 @@ REQUIREMENTS
 	--Process to publish randomly generated requests
 		--Build event namespace (i.e. cluster)  -- ~3min
                   -> Name must be globally unique -- can't all use the same name
-                  -> Pricing tier??
+                  -> Pricing tier: -> Standard to get multiple consumer groups
                   -> After creation, anything to highlight on resource?
                   -> Todd sees "Resource not found" instead of 1 or more graphs
 		--Build event hub (i.e. topic) --1 min
                   -> Create Shared Access Policy now or later???
 		--Create timer-based Azure Function: ~30 min
 			->Name???
-                        ->Every minute: * * * * *
+                        ->Every second: * * * * * *
                         ->Nuget: Azure.Messaging.EventHubs
 			->VPN: Cigna should disconnect from network
-			--Must be able to adjust frequency
 			--Must be able to adjust number of events produced at each interval
 		--Define what a request is
 		--Build randomization functionality to create requests

@@ -22,10 +22,10 @@ namespace RoutingService
             var cancellationSource = new CancellationTokenSource();
             cancellationSource.CancelAfter(TimeSpan.FromMinutes(1));
 
-            var storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=edaworkshopstorage;AccountKey=nec/q8UNus5XcmuJP+4M1fmJtmHMt4q5uUjW0jVqNUPKIb+KWXb6Kx1ST4xpwfjW0jUgiQZ7Gv4N6fiQAAlMZQ==;EndpointSuffix=core.windows.net";
+            var storageConnectionString = "!!!";
             var blobContainerName = "routernotdecidedconsumer";
 
-            var eventHubsConnectionString = "Endpoint=sb://edaworkshop.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=nlXMPx+mAh7XCd4f4xkn1MKK691X1FvQm7jof6q4yM8=";
+            var eventHubsConnectionString = "!!!";
             var eventHubName = "requestnotdecided";
             var consumerGroup = "routingconsumer";
 

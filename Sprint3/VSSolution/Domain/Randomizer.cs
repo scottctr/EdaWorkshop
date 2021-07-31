@@ -5,8 +5,7 @@ namespace Domain
     public static partial class Randomizer
     {
         private static readonly Random _random = new Random();
-        private static readonly char[] _base62chars =
-            "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".ToCharArray();
+        private static readonly char[] _alphaNumericChars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
         private static string[] _firstNames;
         private static string[] _lastNames;
 
@@ -20,11 +19,7 @@ namespace Domain
             var length = _random.Next(6, 12);
             var memberId = string.Empty;
             for (var i = 0; i < length; i++)
-            {
-                memberId += _random.Next(2) == 1
-                    ? _random.Next(9)
-                    : GetLetterCapital();
-            }
+            { memberId += _alphaNumericChars[_random.Next(_alphaNumericChars.Length)]; }
 
             return memberId;
         }
@@ -43,16 +38,6 @@ namespace Domain
             return _firstNames[_random.Next(_firstNames.Length)];
         }
 
-        public static string GetName()
-        {
-            var length = _random.Next(2, 12);
-            var name = GetLetterCapital().ToString();
-            for (var i = 1; i < length; i++)
-            { name += GetLetterLower(); }
-
-            return name;
-        }
-
         public static Priority GetPriority()
         {
             return _random.Next(10) > 8
@@ -68,7 +53,13 @@ namespace Domain
         public static string GetBase62()
         {
             char[] charArray = new char[6];
-            charArray[0] = _base62chars[_random.Next(62)];
+            var base62Length = _alphaNumericChars.Length;
+            charArray[0] = _alphaNumericChars[_random.Next(base62Length)];
+            charArray[1] = _alphaNumericChars[_random.Next(base62Length)];
+            charArray[2] = _alphaNumericChars[_random.Next(base62Length)];
+            charArray[3] = _alphaNumericChars[_random.Next(base62Length)];
+            charArray[4] = _alphaNumericChars[_random.Next(base62Length)];
+            charArray[5] = _alphaNumericChars[_random.Next(base62Length)];
 
             return new string(charArray);
         }
@@ -94,23 +85,6 @@ namespace Domain
                 : _random.Next(values.Length);
 
             return (T)values.GetValue(randomIndex);
-        }
-
-        private static char GetLetterCapital()
-        {
-            //!!!
-            return (char) _random.Next(61, 88);
-        }
-
-        private static char GetLetterLower()
-        {
-            //!!!
-            return (char)_random.Next(89, 115);
-        }
-
-        public static DateTime GetTimeReceived()
-        {
-            return DateTime.Now.AddMinutes(_random.Next(240) * -1);
         }
     }
 }
