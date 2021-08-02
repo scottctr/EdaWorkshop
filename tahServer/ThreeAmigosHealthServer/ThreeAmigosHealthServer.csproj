@@ -8,4 +8,8 @@
     <PackageReference Include="MudBlazor" Version="5.0.15" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Sprint1\Initial\ThreeAmigosHealth\BusinessLogic\BusinessLogic.csproj" />
+  </ItemGroup>
+
 </Project>

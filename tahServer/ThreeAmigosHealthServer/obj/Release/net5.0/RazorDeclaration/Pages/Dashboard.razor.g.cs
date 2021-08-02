@@ -13,77 +13,77 @@ namespace ThreeAmigosHealthServer.Pages
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\Users\scott\Source\Repos\EdaWorkshop2\tahServer\ThreeAmigosHealthServer\_Imports.razor"
+#line 1 "C:\Users\scott\source\repos\EdaWorkshop2\tahServer\ThreeAmigosHealthServer\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\scott\Source\Repos\EdaWorkshop2\tahServer\ThreeAmigosHealthServer\_Imports.razor"
+#line 2 "C:\Users\scott\source\repos\EdaWorkshop2\tahServer\ThreeAmigosHealthServer\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\scott\Source\Repos\EdaWorkshop2\tahServer\ThreeAmigosHealthServer\_Imports.razor"
+#line 3 "C:\Users\scott\source\repos\EdaWorkshop2\tahServer\ThreeAmigosHealthServer\_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\scott\Source\Repos\EdaWorkshop2\tahServer\ThreeAmigosHealthServer\_Imports.razor"
+#line 4 "C:\Users\scott\source\repos\EdaWorkshop2\tahServer\ThreeAmigosHealthServer\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\scott\Source\Repos\EdaWorkshop2\tahServer\ThreeAmigosHealthServer\_Imports.razor"
+#line 5 "C:\Users\scott\source\repos\EdaWorkshop2\tahServer\ThreeAmigosHealthServer\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\scott\Source\Repos\EdaWorkshop2\tahServer\ThreeAmigosHealthServer\_Imports.razor"
+#line 6 "C:\Users\scott\source\repos\EdaWorkshop2\tahServer\ThreeAmigosHealthServer\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\scott\Source\Repos\EdaWorkshop2\tahServer\ThreeAmigosHealthServer\_Imports.razor"
+#line 7 "C:\Users\scott\source\repos\EdaWorkshop2\tahServer\ThreeAmigosHealthServer\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\scott\Source\Repos\EdaWorkshop2\tahServer\ThreeAmigosHealthServer\_Imports.razor"
+#line 8 "C:\Users\scott\source\repos\EdaWorkshop2\tahServer\ThreeAmigosHealthServer\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\scott\Source\Repos\EdaWorkshop2\tahServer\ThreeAmigosHealthServer\_Imports.razor"
+#line 9 "C:\Users\scott\source\repos\EdaWorkshop2\tahServer\ThreeAmigosHealthServer\_Imports.razor"
 using ThreeAmigosHealthServer;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\scott\Source\Repos\EdaWorkshop2\tahServer\ThreeAmigosHealthServer\_Imports.razor"
+#line 10 "C:\Users\scott\source\repos\EdaWorkshop2\tahServer\ThreeAmigosHealthServer\_Imports.razor"
 using ThreeAmigosHealthServer.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 11 "C:\Users\scott\Source\Repos\EdaWorkshop2\tahServer\ThreeAmigosHealthServer\_Imports.razor"
+#line 11 "C:\Users\scott\source\repos\EdaWorkshop2\tahServer\ThreeAmigosHealthServer\_Imports.razor"
 using MudBlazor;
 
 #line default
@@ -98,14 +98,12 @@ using MudBlazor;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 9 "C:\Users\scott\Source\Repos\EdaWorkshop2\tahServer\ThreeAmigosHealthServer\Pages\Dashboard.razor"
+#line 31 "C:\Users\scott\source\repos\EdaWorkshop2\tahServer\ThreeAmigosHealthServer\Pages\Dashboard.razor"
        
     private int Index = -1; //default value cannot be 0 -> first selectedindex is 0.
-    int dataSize = 4;
-    double[] data = { 77, 25, 20, 5 };
-    string[] labels = { "Uranium", "Plutonium", "Thorium", "Caesium", "Technetium", "Promethium",
-                        "Polonium", "Astatine", "Radon", "Francium", "Radium", "Actinium", "Protactinium",
-                        "Neptunium", "Americium", "Curium", "Berkelium", "Californium", "Einsteinium", "Mudblaznium" };
+    int dataSize = 3;
+    double[] data = { 500, 1000, 2000 };
+    string[] labels = { "Sleep", "PAC", "Fertility" };
 
     Random random = new Random();
 
@@ -118,6 +116,13 @@ using MudBlazor;
         StateHasChanged();
     }
 
+    public List<ChartSeries> Series = new List<ChartSeries>()
+    {
+        new ChartSeries() { Name = "Sleep", Data = new double[] { 90, 79, 72, 69, 62, 62, 55, 65, 70 } },
+        new ChartSeries() { Name = "PAC", Data = new double[] { 10, 41, 35, 51, 49, 62, 69, 91, 148 } },
+        new ChartSeries() { Name = "Fertility", Data = new double[] { 21, 62, 11, 44, 55, 66, 77, 23, 53 } },
+    };
+    public string[] XAxisLabels = { "12am", "1am", "2am", "3am", "4am", "5am", "6am", "7am", "8am" };
 
 #line default
 #line hidden

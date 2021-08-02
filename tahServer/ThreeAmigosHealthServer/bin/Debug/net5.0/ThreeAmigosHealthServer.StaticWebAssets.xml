@@ -1,4 +1,4 @@
 ﻿<StaticWebAssets Version="1.0">
-  <ContentRoot BasePath="/" Path="C:\edaWorkshop\Sprint1\tahServer\ThreeAmigosHealthServer\obj\Debug\net5.0\scopedcss\bundle\" />
-  <ContentRoot BasePath="_content/MudBlazor" Path="C:\Users\scott.carter\.nuget\packages\mudblazor\5.0.15\build\..\staticwebassets\" />
+  <ContentRoot BasePath="/" Path="C:\Users\scott\source\repos\EdaWorkshop2\tahServer\ThreeAmigosHealthServer\obj\Debug\net5.0\scopedcss\bundle\" />
+  <ContentRoot BasePath="_content/MudBlazor" Path="C:\Users\scott\.nuget\packages\mudblazor\5.0.15\build\..\staticwebassets\" />
 </StaticWebAssets>

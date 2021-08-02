@@ -160,6 +160,16 @@
         "runtime": {
           "lib/netcoreapp3.0/System.IO.Pipelines.dll": {}
         }
+      },
+      "BusinessLogic/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/BusinessLogic.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BusinessLogic.dll": {}
+        }
       }
     }
   },
@@ -432,27 +442,33 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "BusinessLogic/1.0.0": {
+      "type": "project",
+      "path": "../../Sprint1/Initial/ThreeAmigosHealth/BusinessLogic/BusinessLogic.csproj",
+      "msbuildProject": "../../Sprint1/Initial/ThreeAmigosHealth/BusinessLogic/BusinessLogic.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "BusinessLogic >= 1.0.0",
       "MudBlazor >= 5.0.15"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\scott.carter\\.nuget\\packages\\": {}
+    "C:\\Users\\scott\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\edaWorkshop\\Sprint1\\tahServer\\ThreeAmigosHealthServer\\ThreeAmigosHealthServer.csproj",
+      "projectUniqueName": "C:\\Users\\scott\\source\\repos\\EdaWorkshop2\\tahServer\\ThreeAmigosHealthServer\\ThreeAmigosHealthServer.csproj",
       "projectName": "ThreeAmigosHealthServer",
-      "projectPath": "C:\\edaWorkshop\\Sprint1\\tahServer\\ThreeAmigosHealthServer\\ThreeAmigosHealthServer.csproj",
-      "packagesPath": "C:\\Users\\scott.carter\\.nuget\\packages\\",
-      "outputPath": "C:\\edaWorkshop\\Sprint1\\tahServer\\ThreeAmigosHealthServer\\obj\\",
+      "projectPath": "C:\\Users\\scott\\source\\repos\\EdaWorkshop2\\tahServer\\ThreeAmigosHealthServer\\ThreeAmigosHealthServer.csproj",
+      "packagesPath": "C:\\Users\\scott\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\scott\\source\\repos\\EdaWorkshop2\\tahServer\\ThreeAmigosHealthServer\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\scott.carter\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\scott\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -460,19 +476,16 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "http://ccnscmavenrepo.carecorenational.com/service/local/nuget/SharedServices/": {},
-        "http://ccnscmavenrepo.carecorenational.com/service/local/nuget/public_package_sources/": {},
-        "http://devops01/nuget/eviCorePlatform/": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://pkgs.dev.azure.com/eviCoreDev/UCX/_packaging/UCX-packages/nuget/v3/index.json": {},
-        "https://pkgs.dev.azure.com/eviCoreDev/XPlatform/_packaging/Xplatform/nuget/v3/index.json": {},
-        "https://pkgs.dev.azure.com/eviCoreDev/_packaging/eviCore.SystemEventCoordinator.Lite%40Local/nuget/v3/index.json": {},
-        "https://pkgs.dev.azure.com/eviCoreDev/_packaging/eviCoreVSTSNugetFeed%40Local/nuget/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\scott\\source\\repos\\EdaWorkshop2\\Sprint1\\Initial\\ThreeAmigosHealth\\BusinessLogic\\BusinessLogic.csproj": {
+              "projectPath": "C:\\Users\\scott\\source\\repos\\EdaWorkshop2\\Sprint1\\Initial\\ThreeAmigosHealth\\BusinessLogic\\BusinessLogic.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -508,7 +521,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
       }
     }
   }
