@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ProviderTransferServiceFunction.Domain
+namespace BusinessLogic
 {
     public static class RequestGenerator
     {
@@ -10,14 +10,18 @@ namespace ProviderTransferServiceFunction.Domain
             var timeDue = DateTime.Now.AddDays(priority == Priority.Standard ? 3 : 1);
             return new RequestForService
             {
+                Id = Randomizer.GetId(),
                 MemberId = Randomizer.GetMemberId(),
-                PatientFirstName = Randomizer.GetName(),
-                PatientLastName = Randomizer.GetName(),
+                PatientFirstName = Randomizer.GetFirstName(),
+                PatientLastName = Randomizer.GetLastName(),
                 Priority = priority,
                 RequestedService = Randomizer.GetRequestedService(),
                 TimeReceived = DateTime.Now,
                 TimeDue = timeDue,
-                Status = Status.Received
+                Status = Status.Received,
+                ProviderFirstName = Randomizer.GetFirstName(),
+                ProviderLastName = Randomizer.GetLastName(),
+
             };
         }
     }

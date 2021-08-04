@@ -1,4 +1,4 @@
-﻿namespace ProviderTransferServiceFunction.Domain
+﻿namespace BusinessLogic
 {
     public enum RequestedService
     {

@@ -1,7 +1,7 @@
 ﻿using Azure.Messaging.EventHubs;
 using Azure.Messaging.EventHubs.Processor;
 using Azure.Storage.Blobs;
-using Domain;
+using BusinessLogic;
 using System;
 using System.Collections.Generic;
 using System.Text;

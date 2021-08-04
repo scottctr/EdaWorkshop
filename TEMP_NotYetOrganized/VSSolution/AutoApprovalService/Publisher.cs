@@ -11,8 +11,8 @@
     {
         public static class Publisher
         {
-            private static string _approvedConnectionString = "Endpoint=sb://edaworkshop.servicebus.windows.net/;SharedAccessKeyName=Publisher;SharedAccessKey=KQL2H1MoSav3XrVhriz8/XFlYwIuF9/8tG5U4cyHP+M=;EntityPath=requestdecided";
-            private static string _notApprovedConnectionString = "Endpoint=sb://edaworkshop.servicebus.windows.net/;SharedAccessKeyName=Listener;SharedAccessKey=a/9Y+FyFnH8D1bWDDskAiPCND9fHKOUqPkYK7/ix0YA=;EntityPath=requestnotdecided";
+            private static string _approvedConnectionString = "!!!";
+            private static string _notApprovedConnectionString = "!!!";
             private static EventHubProducerClient _approvedPublisher;
             private static EventHubProducerClient _notApprovedPublisher;
 
