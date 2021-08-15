@@ -15,7 +15,7 @@ namespace AutoApprovalService
         private static Random _randomizer = new Random();
 
         [FunctionName("Function1")]
-        public static async Task Run([EventHubTrigger("requestreceived", Connection = "EventHubListenerConnString")] EventData[] events, ILogger log)
+        public static async Task Run([EventHubTrigger("requestreceived", Connection = "EventHubListenerConnString", ConsumerGroup = "autoapprovalreceivedrequestconsumer")] EventData[] events, ILogger log)
         {
             var exceptions = new List<Exception>();
 
@@ -27,6 +27,9 @@ namespace AutoApprovalService
 
                     if (_randomizer.Next(0, 2) == 1)
                     {
+                        //Mark it as auto approved
+                        messageBody = messageBody.Replace(",\"Status\":0}", ",\"Status\":4}");
+
                         await Publisher.SendApprovalAsync(messageBody);
                         log.LogInformation($"Message approved: {messageBody}");
                     }
