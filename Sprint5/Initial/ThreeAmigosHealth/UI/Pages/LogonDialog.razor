@@ -1,0 +1,29 @@
+﻿@using MudBlazor
+
+<MudDialog>
+    <DialogContent>
+        <MudTextField @bind-Value="@UserName" Label="User Name" />
+    <MudSelect Label="Discipline" @bind-Value="_discipline" OffsetY="true" AdornmentColor="Color.Secondary">
+        <MudSelectItem Value="@(MedicalDiscipline.Fertiliy)"></MudSelectItem>
+        <MudSelectItem Value="@(MedicalDiscipline.PostAcuteCare)"></MudSelectItem>
+        <MudSelectItem Value="@(MedicalDiscipline.Sleep)"></MudSelectItem>
+    </MudSelect>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="Cancel">Cancel</MudButton>
+        <MudButton Color="Color.Primary" OnClick="Submit">Ok</MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [CascadingParameter] MudDialogInstance MudDialog { get; set; }
+
+    private MedicalDiscipline _discipline { get; set; }
+
+    void Submit()
+    {
+        MudDialog.Close(DialogResult.Ok(new UserDetails(UserName, _discipline)));
+    }
+
+    void Cancel() => MudDialog.Cancel();
+}
