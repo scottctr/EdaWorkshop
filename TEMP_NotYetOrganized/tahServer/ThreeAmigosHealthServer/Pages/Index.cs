@@ -1,10 +1,12 @@
-﻿using MudBlazor;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using ThreeAmigosHealthServer.Observers;
 
 namespace ThreeAmigosHealthServer.Pages
 {
     public partial class Index
     {
+        private static ReceivedObserver receivedObserver = new();
+        private static ApprovedObserver approvedObserver = new();
         public static string UserName { get; set; }
         public static MedicalDiscipline Discipline { get; set; }
 
@@ -21,6 +23,12 @@ namespace ThreeAmigosHealthServer.Pages
 
                 StateHasChanged();
             }
+        }
+
+        private async Task StartListenerAsync()
+        {
+            await receivedObserver.Start();
+            await approvedObserver.Start();
         }
     }
 }

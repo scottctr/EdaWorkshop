@@ -1,0 +1,15 @@
+private static List<EventData> GetRequests(int count)
+{
+    var requestList = new List<EventData>(count);
+    for(var i = 0; i < count; i++)
+    {
+        var request = RequestGenerator.GetRandomRequest();
+        var requestJson = JsonSerializer.Serialize(request);
+
+        var requestBytes = Encoding.UTF8.GetBytes(requestJson);
+        requestList.Add(new EventData(new BinaryData(requestBytes)));
+        Console.WriteLine($"Request {i} received: " + requestJson);
+    }
+
+    return requestList;
+}

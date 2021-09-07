@@ -1,0 +1,12 @@
+private static IConfigurationRoot GetConfig(ExecutionContext context)
+{
+    return new ConfigurationBuilder()
+            .SetBasePath(context.FunctionAppDirectory)
+            // This gives you access to your application settings 
+            // in your local development environment
+            .AddJsonFile("local.settings.json", optional: true, reloadOnChange: true)
+            // This is what actually gets you the 
+            // application settings in Azure
+            .AddEnvironmentVariables()
+            .Build();
+}
