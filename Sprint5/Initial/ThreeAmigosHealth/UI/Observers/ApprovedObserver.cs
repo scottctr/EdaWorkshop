@@ -20,10 +20,9 @@ namespace UI.Observers
             var cancellationSource = new CancellationTokenSource();
             cancellationSource.CancelAfter(TimeSpan.FromMinutes(10));
 
-            var storageConnectionString = "!!!storageConnectString!!!";
             var blobContainerName = "uiapprovedrequestsconsumer";
-
-            var eventHubsConnectionString = "!!!eventHubsConnectionString!!!";
+            var storageConnectionString = "!!!";
+            var eventHubsConnectionString = "!!!";
             var eventHubName = "decidedrequests";
             var consumerGroup = "uidecidedrequestsconsumer";
 
