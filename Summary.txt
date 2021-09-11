@@ -1,0 +1,68 @@
+*** % of .Net folks???
+
+
+- Root
+  -- Presentation
+     -- Intro - Todd    
+  - Sprint 1 / Provider Transfer Service - Scott
+    *** Consider removing batchSize since we probably won't get to it
+        ...but may want to keep to show
+    - Initial
+      -- Business Logic
+      -- Snippet: AzureFunction_GetConfigSettings
+      -- Snippet: GetEventHubRequestBatch
+  - Sprint 2 / Auto Approval Service - Todd
+    *** Notice can get multiple event per poll in trigger event
+    - Initial
+      -- Business Logic
+      -- Provider Transfer Service
+      -- Azure script
+  - Sprint 3 / Routing Service - Ben
+     -> GOAL: Have this completely pre-packaged
+        -> Help students deploy
+        -> Talk through logic and key points
+    - Final
+      -- Business Logic
+      -- Provider Transfer Service
+      -- Auto Approval Service
+      -- Routing Service
+      -- Azure script
+  - Sprint 4 / UI - Scott
+    **** Show stats with manual approvals / disapprovals
+    - Initial
+      -- Business Logic
+      -- Provider Transfer Service
+      -- Auto Approval Service
+      -- Routing Service
+      *** UI starting point
+      -- Azure script
+    - Final
+      -- Business Logic
+      -- Provider TransferService
+      -- Auto Approval Service
+      -- Routing Service
+      -- UI
+      -- Azure script    
+
+
+Next Steps
+==========
+- Scott:
+  -- UI
+     --- View request
+     --- Commit UI starting point
+     --- Get Request
+     --- Decide request
+     --- View stats with request actions
+     --- Be ready to present sprint 1 / Provider Transfer Service 
+- Todd:
+  - Intro
+  - Auto routing service
+- Ben:
+  - Package up routing service and slides to walk through
+
+Newbie Concerns
+===============
+- Azure
+- Visual Studio
+- C#
