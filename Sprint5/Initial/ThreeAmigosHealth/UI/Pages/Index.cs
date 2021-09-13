@@ -7,19 +7,21 @@ namespace UI.Pages
     {
         private static ReceivedObserver receivedObserver = new();
         private static ApprovedObserver approvedObserver = new();
+        private bool _loginDisplayed;
+
         public static string UserName { get; set; }
-        public static MedicalDiscipline Discipline { get; set; }
 
         public async Task GetUserDetailsAsync()
         {
-            if (string.IsNullOrWhiteSpace(UserName))
+            //if (string.IsNullOrWhiteSpace(UserName))
+            if (!_loginDisplayed)
             {
+                _loginDisplayed = true;
                 var dialog = DialogService.Show<LogonDialog>("Login");
                 var result = await dialog.Result;
                 var userDetails = result.Data as UserDetails;
 
                 UserName = userDetails.UserName;
-                Discipline = userDetails.Discipline;
 
                 StateHasChanged();
             }

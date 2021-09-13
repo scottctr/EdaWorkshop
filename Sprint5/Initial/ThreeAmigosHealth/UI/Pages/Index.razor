@@ -1,66 +1,79 @@
 ﻿@page "/"
+@using BusinessLogic
+@using MudBlazor.Extensions
 @inject IDialogService DialogService
 
-
 <MudGrid>
-    <MudItem xs="12" sm="8" md="9">
+    <MudItem xs="6" sm="6" md="6">
         <MudCard>
-            <MudCardHeader>
+            <MudCardHeader Style="height: 22px; font-weight: bolder">
+                <CardHeaderContent>
+                    <MudText>Request</MudText>
+                </CardHeaderContent>
+            </MudCardHeader>
+            <MudCardContent>
+                <MudGrid>
+                    <MudItem xs="4" md="4">
+                        <MudField Label="Requested Service" Variant="Variant.Outlined">@Request.RequestedService.ToDescriptionString()</MudField>                   
+                    </MudItem>
+                    <MudItem xs="4" md="4">
+                        <MudTextField @bind-Value="Request.Id" Label="Request ID" Variant="Variant.Outlined" ReadOnly="true" />
+                    </MudItem>
+                    <MudItem xs="4" md="4">
+                        <MudField Label="Time Received" Variant="Variant.Outlined">@Request.TimeReceived.ToString("MM/dd/yyyy h:mm tt")</MudField>
+                    </MudItem>
+                    <MudItem>
+                        <MudButton Variant="Variant.Filled" Color="Color.Success">Approve</MudButton>
+                    </MudItem>
+                    <MudItem>
+                        <MudButton Variant="Variant.Filled" Color="Color.Error">Disapprove</MudButton>
+                    </MudItem>
+                </MudGrid>
+            </MudCardContent>
+        </MudCard>
+    </MudItem>
+    <MudItem xs="6" sm="6" md="6">
+        <MudCard>
+            <MudCardHeader Style="height: 22px; font-weight: bolder">
                 <CardHeaderContent>
                     <MudText>Patient</MudText>
                 </CardHeaderContent>
             </MudCardHeader>
             <MudCardContent>
                 <MudGrid>
-                    <MudItem xs="12" md="6">
-                        <MudTextField @bind-Value="FirstName" Label="First Name" Variant="Variant.Outlined" />
+                    <MudItem xs="4" md="4">
+                        <MudTextField @bind-Value="Request.MemberId" Label="Member ID" Variant="Variant.Outlined" ReadOnly="true" />
                     </MudItem>
-                    <MudItem xs="12" md="6">
-                        <MudTextField @bind-Value="LastName" Label="Last Name" Variant="Variant.Outlined" />
+                    <MudItem xs="4" md="4">
+                        <MudTextField @bind-Value="Request.PatientFirstName" Label="First Name" Variant="Variant.Outlined" ReadOnly="true" />
                     </MudItem>
-                    <MudItem xs="12" md="6">
-                        <MudTextField @bind-Value="JobTitle" Label="Job Title" Variant="Variant.Outlined" />
-                    </MudItem>
-                    <MudItem xs="12" md="6">
-                        <MudTextField @bind-Value="Email" Label="Email" Variant="Variant.Outlined" InputType="InputType.Email" />
+                    <MudItem xs="4" md="4">
+                        <MudTextField @bind-Value="Request.PatientLastName" Label="Last Name" Variant="Variant.Outlined" ReadOnly="true" />
                     </MudItem>
                 </MudGrid>
             </MudCardContent>
-            @*<MudCardActions Class="pb-4 pl-4">
-                    <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto" @onclick="@(() => SaveChanges("Profile details saved", Severity.Success))">Save Changes</MudButton>
-                </MudCardActions>*@
         </MudCard>
     </MudItem>
-    <MudItem xs="12" sm="8" md="9">
+    <MudItem xs="6" sm="6" md="6">
         <MudCard>
-            <MudCardHeader>
+            <MudCardHeader Style="height: 22px; font-weight: bolder">
                 <CardHeaderContent>
                     <MudText>Provider</MudText>
                 </CardHeaderContent>
             </MudCardHeader>
             <MudCardContent>
                 <MudGrid>
-                    <MudItem xs="12" md="6">
-                        <MudTextField @bind-Value="FirstName" Label="First Name" Variant="Variant.Outlined" />
+                    <MudItem xs="4" md="4">
+                        <MudTextField @bind-Value="Request.ProviderFirstName" Label="First Name" Variant="Variant.Outlined" ReadOnly="true" />
                     </MudItem>
-                    <MudItem xs="12" md="6">
-                        <MudTextField @bind-Value="LastName" Label="Last Name" Variant="Variant.Outlined" />
-                    </MudItem>
-                    <MudItem xs="12" md="6">
-                        <MudTextField @bind-Value="JobTitle" Label="Job Title" Variant="Variant.Outlined" />
-                    </MudItem>
-                    <MudItem xs="12" md="6">
-                        <MudTextField @bind-Value="Email" Label="Email" Variant="Variant.Outlined" InputType="InputType.Email" />
+                    <MudItem xs="4" md="4">
+                        <MudTextField @bind-Value="Request.ProviderLastName" Label="Last Name" Variant="Variant.Outlined" ReadOnly="true" />
                     </MudItem>
                 </MudGrid>
             </MudCardContent>
-            @*<MudCardActions Class="pb-4 pl-4">
-                    <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto" @onclick="@(() => SaveChanges("Profile details saved", Severity.Success))">Save Changes</MudButton>
-                </MudCardActions>*@
         </MudCard>
     </MudItem>
 </MudGrid>
-
 
 @{
     StartListenerAsync();
@@ -68,8 +81,16 @@
 }
 
 @code {
-    public string FirstName { get; set; } = "Jonny";
-    public string LastName { get; set; } = "Larsson";
-    public string JobTitle { get; set; } = "IT Consultant";
-    public string Email { get; set; } = "Youcanprobably@findout.com";
+
+    public RequestForService Request = new()
+    {
+        Id = "123ABC"
+        , TimeReceived = DateTime.Now.AddDays(-1)
+        , RequestedService = RequestedService.LongTermCare
+        , PatientFirstName = "Johnny"
+        , PatientLastName = "Walker"
+        , MemberId = "1236"
+        , ProviderFirstName = "Strange"
+        , ProviderLastName = "Love"
+    };
 }
