@@ -1,11 +1,18 @@
+private static string _connectionString = "!!!";
+private static EventHubProducerClient _publisher;
+
+===================
+
+await _publisher.SendAsync();
+
+===================
+
 _publisher = new EventHubProducerClient(_connectionString);
 
-var requestList = new List<EventData>();
-var request = RequestGenerator.GetRandomRequest();
+var requestList = new System.Collections.Generic.List<EventData>();
+var request = BusinessLogic.RequestGenerator.GetRandomRequest();
 var requestJson = System.Text.Json.JsonSerializer.Serialize(request);
-var requestBytes = Encoding.UTF8.GetBytes(requestJson);
+var requestBytes = System.Text.Encoding.UTF8.GetBytes(requestJson);
 
 requestList.Add(new EventData(new BinaryData(requestBytes)));
 Console.WriteLine("Request received: " + requestJson);
-
-await _publisher.SendAsync(requestList);
