@@ -1,0 +1,5 @@
+For timer trigger syntax, see https://github.com/atifaziz/NCrontab/wiki/Crontab-Expression
+
+Default: "0 */5 * * * *" fires on every minute that's divisible by 5
+Fire every minute: "* * * * *"
+Fire every second: "* * * * * *"

@@ -7,8 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLogic", "BusinessLo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Snippets", "Snippets", "{86B23620-BEB0-411D-9283-B6386B31B19E}"
 	ProjectSection(SolutionItems) = preProject
-		AzureFunction_GetConfigSettings.txt = AzureFunction_GetConfigSettings.txt
-		GetEventHubRequestBatch.txt = GetEventHubRequestBatch.txt
+		CronScheduleInfo.txt = CronScheduleInfo.txt
+		ReceiveRequestLogic.txt = ReceiveRequestLogic.txt
 	EndProjectSection
 EndProject
 Global
