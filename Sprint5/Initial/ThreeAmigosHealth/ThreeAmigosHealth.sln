@@ -6,14 +6,14 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLogic", "BusinessLogic\BusinessLogic.csproj", "{588ADD0B-8729-4B4C-8AAD-865823478654}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Snippets", "Snippets", "{86B23620-BEB0-411D-9283-B6386B31B19E}"
-	ProjectSection(SolutionItems) = preProject
-		AzureFunction_GetConfigSettings.txt = AzureFunction_GetConfigSettings.txt
-		GetEventHubRequestBatch.txt = GetEventHubRequestBatch.txt
-	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProviderTransferService", "ProviderTransferService\ProviderTransferService.csproj", "{77DCE54F-1FCA-4EBE-B407-BA142539D9D6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UI", "UI\UI.csproj", "{A468F586-BB9E-4619-9EE5-D05665304EF6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoutingService", "RoutingService\RoutingService.csproj", "{0341F2AB-A2FD-46DA-8267-7B536E56DA3A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoApprovalService", "AutoApprovalService\AutoApprovalService.csproj", "{8D57950B-E821-4967-AD46-0E4363133861}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +33,14 @@ Global
 		{A468F586-BB9E-4619-9EE5-D05665304EF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A468F586-BB9E-4619-9EE5-D05665304EF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A468F586-BB9E-4619-9EE5-D05665304EF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0341F2AB-A2FD-46DA-8267-7B536E56DA3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0341F2AB-A2FD-46DA-8267-7B536E56DA3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0341F2AB-A2FD-46DA-8267-7B536E56DA3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0341F2AB-A2FD-46DA-8267-7B536E56DA3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D57950B-E821-4967-AD46-0E4363133861}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D57950B-E821-4967-AD46-0E4363133861}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D57950B-E821-4967-AD46-0E4363133861}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D57950B-E821-4967-AD46-0E4363133861}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

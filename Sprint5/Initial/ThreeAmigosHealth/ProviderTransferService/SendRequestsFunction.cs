@@ -23,7 +23,6 @@ namespace ProviderTransferServiceFunction
             _publisher = new EventHubProducerClient(_connectionString);
 
             var requestList = new List<EventData>();
-
             var request = RequestGenerator.GetRandomRequest();
             var requestJson = System.Text.Json.JsonSerializer.Serialize(request);
             var requestBytes = Encoding.UTF8.GetBytes(requestJson);
