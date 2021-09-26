@@ -15,6 +15,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoutingService", "RoutingSe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoApprovalService", "AutoApprovalService\AutoApprovalService.csproj", "{8D57950B-E821-4967-AD46-0E4363133861}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ArmScripts", "ArmScripts", "{3E51AA6C-C905-4EDE-83F2-FE2FCDECEB94}"
+	ProjectSection(SolutionItems) = preProject
+		Sprint1_StorageAccount.json = Sprint1_StorageAccount.json
+		ArmScripts\Sprint1and2EventHubStuff.json = ArmScripts\Sprint1and2EventHubStuff.json
+		ArmScripts\Sprint3_RoutingServiceMessagingItems.json = ArmScripts\Sprint3_RoutingServiceMessagingItems.json
+		Sprint3_StorageAccountItems.json = Sprint3_StorageAccountItems.json
+		ArmScripts\Sprint3_UIMessagingItems.json = ArmScripts\Sprint3_UIMessagingItems.json
+		Sprint4_StorageAccountItems.json = Sprint4_StorageAccountItems.json
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

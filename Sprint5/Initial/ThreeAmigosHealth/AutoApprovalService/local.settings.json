@@ -1,0 +1,8 @@
+{
+    "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    "EventHubListenerConnString": "Endpoint=sb://edaworkshophubnamespace.servicebus.windows.net/;SharedAccessKeyName=ReceivedRequestsListenerSAP;SharedAccessKey=sQ14GMnyycmP5f1DUU+oZvik6FiilQ0Czn/OmjThlF0=;EntityPath=receivedrequests"
+  }
+}

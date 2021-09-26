@@ -1,4 +1,3 @@
-using AutoApprovalService.AutoApprovalService;
 using Microsoft.Azure.EventHubs;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Logging;
@@ -12,7 +11,7 @@ namespace AutoApprovalService
 {
     public static class Function1
     {
-        private static Random _randomizer = new Random();
+        private static readonly Random _randomizer = new Random();
 
         [FunctionName("Function1")]
         public static async Task Run([EventHubTrigger("requestreceived", Connection = "EventHubListenerConnString", ConsumerGroup = "autoapprovalreceivedrequestconsumer")] EventData[] events, ILogger log)
