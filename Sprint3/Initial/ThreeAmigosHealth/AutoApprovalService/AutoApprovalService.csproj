@@ -4,13 +4,11 @@
     <AzureFunctionsVersion>v3</AzureFunctionsVersion>
   </PropertyGroup>
   <ItemGroup>
-	<PackageReference Include="Azure.Messaging.EventHubs" Version="5.5.0" />
-    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="3.0.11" />
+	  <PackageReference Include="Azure.Messaging.EventHubs" Version="5.5.0" />
+	  <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.EventHubs" Version="4.2.0" />
+	  <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="3.0.13" />
   </ItemGroup>
-	<ItemGroup>
-		<ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj" />
-	</ItemGroup>
-	<ItemGroup>
+  <ItemGroup>
     <None Update="host.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

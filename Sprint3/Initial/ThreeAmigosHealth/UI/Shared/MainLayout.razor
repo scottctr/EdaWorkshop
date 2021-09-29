@@ -1,0 +1,32 @@
+﻿@inherits LayoutComponentBase
+
+<MudLayout>
+    <div>
+        <MudAppBar Style="background-color: #5DBA47">
+            <ChildContent>
+                <img style="vertical-align: middle" src="Images\jpg-02.jpg" alt="Three Amigo's Health - Final Image" width="189" height="150" sizes="(max-width: 505px) 100vw, 505px" />
+                <MudButton Variant="Variant.Text" Link="/" Style="color: white;">App</MudButton>
+                <MudButton Variant="Variant.Text" Link="/Dashboard/" Style="color: white;" Class="mr-3">Dashboard</MudButton>
+            </ChildContent>
+        </MudAppBar>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+    </div>
+</MudLayout>
+<div class="page">
+    <div class="main">
+        <div class="content px-4">
+            @Body
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<MudThemeProvider />
+<MudDialogProvider />

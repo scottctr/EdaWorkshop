@@ -15,5 +15,6 @@ namespace BusinessLogic
         public string ProviderLastName { get; set; }
         public string MemberId { get; set; }
         public Status Status { get; set; }
+        public string AssignedToUser { get; set; }
     }
 }
