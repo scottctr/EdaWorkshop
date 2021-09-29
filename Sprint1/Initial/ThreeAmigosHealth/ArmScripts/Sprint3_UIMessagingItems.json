@@ -1,0 +1,53 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "hub_namespace_name": {
+      "defaultValue": "edaworkshophubnamespace",
+      "type": "String"
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationRules",
+      "apiVersion": "2021-06-01-preview",
+      "name": "[concat(parameters('hub_namespace_name'), '/getrequest/GetRequestSenderSAP')]",
+      "location": "Central US",
+      "properties": {
+        "rights": [
+          "Send"
+        ]
+      }
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationRules",
+      "apiVersion": "2021-06-01-preview",
+      "name": "[concat(parameters('hub_namespace_name'), '/requestassigned/RequestAssignedSenderSAP')]",
+      "location": "Central US",
+      "properties": {
+        "rights": [
+          "Send"
+        ]
+      }
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationRules",
+      "apiVersion": "2021-06-01-preview",
+      "name": "[concat(parameters('hub_namespace_name'), '/decidedrequests/DecidedRequestsSenderSAP')]",
+      "location": "Central US",
+      "properties": {
+        "rights": [
+          "Send"
+        ]
+      }
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
+      "apiVersion": "2021-06-01-preview",
+      "name": "[concat(parameters('hub_namespace_name'), '/requestassigned/uirequestassignedconsumer')]",
+      "location": "Central US",
+      "properties": {}
+    }
+  ]
+}

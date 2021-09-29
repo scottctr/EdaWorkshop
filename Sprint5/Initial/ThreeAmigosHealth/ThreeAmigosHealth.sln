@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLogic", "BusinessLogic\BusinessLogic.csproj", "{588ADD0B-8729-4B4C-8AAD-865823478654}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Snippets", "Snippets", "{86B23620-BEB0-411D-9283-B6386B31B19E}"
+	ProjectSection(SolutionItems) = preProject
+		Snippets\AzureResourceNames.txt = Snippets\AzureResourceNames.txt
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProviderTransferService", "ProviderTransferService\ProviderTransferService.csproj", "{77DCE54F-1FCA-4EBE-B407-BA142539D9D6}"
 EndProject

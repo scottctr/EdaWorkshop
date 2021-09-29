@@ -1,0 +1,41 @@
+SPRINT 2 SNIPPETS
+
+------------------------
+Publisher
+------------------------
+
+public static async Task SendApprovalAsync(string requestJson)
+{
+	await _approvedPublisher.SendAsync(GetEventData(requestJson));
+}
+
+public static async Task SendNonApprovalAsync(string requestJson)
+{
+	await _notapprovedPublisher.SendAsync(GetEventData(requestJson));
+}
+
+private static List<EventData> GetEventData(string requestJson)
+{
+	var requestBytes = Encoding.UTF8.GetBytes(requestJson);
+	var eventDataList = new List<EventData>(1) { new EventData(new BinaryData(requestBytes)) };
+	return eventDataList;
+}
+
+------------------------
+Function
+------------------------
+
+if (_autoEvaluator.Approve())
+{
+	var rfs = JsonSerializer.Deserialize<RequestForService>(messageBody);
+	rfs.Status = Status.AutoApproved;
+	messageBody = JsonSerializer.Serialize(rfs);
+
+	await Publisher.SendApprovalAsync(messageBody);
+	log.LogInformation($"Message approved: {messageBody}");
+}
+else
+{
+	await Publisher.SendNonApprovalAsync(messageBody);
+	log.LogInformation($"Message not approved: {messageBody}");
+}

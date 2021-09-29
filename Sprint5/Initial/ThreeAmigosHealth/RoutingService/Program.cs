@@ -25,13 +25,10 @@ namespace RoutingService
 
         // Should be standard settings, but double check
         private const string GetRequestBlobContainerName = "routinggetrequestconsumer";
-        private const string GetRequestEventHubName = "getrequest";
         private const string GetRequestConsumerGroup = "routinggetconsumer";
         private const string NotAutoApprovedBlobContainerName = "routingnotautoapprovedconsumer";
-        private const string NotAutoApprovedEventHubName = "notautoapprovedrequests";
         private const string NotAutoApprovedConsumerGroup = "routingnotautoapprovedconsumer";
         private const string RequestDecidedBlobContainerName = "routingrequestdecidedconsumer";
-        private const string RequestDecidedEventHubName = "requestdecidedrequests";
         private const string RequestDecidedConsumerGroup = "routingrequestdecidedconsumer";
 
         // Private fields
@@ -79,18 +76,20 @@ namespace RoutingService
             await _requestAssignedPublisher?.DisposeAsync().AsTask();
         }
 
-        private static async Task getRequestEventHandlerAsync(ProcessEventArgs arg)
+        private static async Task getRequestEventHandlerAsync(ProcessEventArgs eventArgs)
         {
             if (Requests.TryTake(out var request))
             {
-                //!!!set user name so UI knows it for current user
+                var eventArgBody = Encoding.UTF8.GetString(eventArgs.Data.Body.ToArray());
+                Console.WriteLine("Received request for request: " + eventArgBody);
 
-                var requestJson = System.Text.Json.JsonSerializer.Serialize(request);
-                //!!!Console.WriteLine($"[GetRequestConsumerError]: {arg.Exception.Message}");
+                // Set user name so we know who it's assigned to
+                var getRequestCommand = JsonSerializer.Deserialize<GetRequestForServiceCommand>(eventArgBody);
+                request.AssignedToUser = getRequestCommand?.UserName;
 
+                // Published newly assigned request
+                var requestJson = JsonSerializer.Serialize(request);
                 var requestBytes = Encoding.UTF8.GetBytes(requestJson);
-
-
                 await _requestAssignedPublisher.SendAsync(new List<EventData>{ new (new BinaryData(requestBytes)) });
             }
         }
@@ -135,7 +134,7 @@ namespace RoutingService
             // NOTE: This isn't needed for the workshop since we don't need to route auto approved or assigned requests.
 
             var messageBody = Encoding.UTF8.GetString(eventArgs.Data.Body.ToArray());
-            var rfs = JsonSerializer.Deserialize<RequestForService>(messageBody);
+            // var rfs = JsonSerializer.Deserialize<RequestForService>(messageBody);
 
             //Requests.Delete(rfs);
             Console.WriteLine("Router received decided request: " + messageBody);

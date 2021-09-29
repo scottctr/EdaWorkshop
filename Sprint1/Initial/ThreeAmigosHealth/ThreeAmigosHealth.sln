@@ -9,7 +9,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Snippets", "Snippets", "{86
 	ProjectSection(SolutionItems) = preProject
 		CronScheduleInfo.txt = CronScheduleInfo.txt
 		ReceiveRequestLogic.txt = ReceiveRequestLogic.txt
+		Sprint2.txt = Sprint2.txt
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProviderTransferService", "ProviderTransferService\ProviderTransferService.csproj", "{1ECA457F-60F4-49CD-B5AA-97722AE45BE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoApprovalService", "AutoApprovalService\AutoApprovalService.csproj", "{CE2B9DFD-7F15-4C6D-B692-D7CCEBF5D343}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +26,14 @@ Global
 		{588ADD0B-8729-4B4C-8AAD-865823478654}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{588ADD0B-8729-4B4C-8AAD-865823478654}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{588ADD0B-8729-4B4C-8AAD-865823478654}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1ECA457F-60F4-49CD-B5AA-97722AE45BE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1ECA457F-60F4-49CD-B5AA-97722AE45BE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1ECA457F-60F4-49CD-B5AA-97722AE45BE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1ECA457F-60F4-49CD-B5AA-97722AE45BE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE2B9DFD-7F15-4C6D-B692-D7CCEBF5D343}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE2B9DFD-7F15-4C6D-B692-D7CCEBF5D343}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE2B9DFD-7F15-4C6D-B692-D7CCEBF5D343}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE2B9DFD-7F15-4C6D-B692-D7CCEBF5D343}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

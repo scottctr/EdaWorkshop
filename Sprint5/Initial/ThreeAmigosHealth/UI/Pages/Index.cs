@@ -5,8 +5,8 @@ namespace UI.Pages
 {
     public partial class Index
     {
-        private static ReceivedObserver receivedObserver = new();
-        private static ApprovedObserver approvedObserver = new();
+        private static readonly ReceivedObserver ReceivedObserver = new();
+        private static readonly ApprovedObserver ApprovedObserver = new();
         private bool _loginDisplayed;
 
         public static string UserName { get; set; }
@@ -29,8 +29,8 @@ namespace UI.Pages
 
         private async Task StartListenerAsync()
         {
-            await receivedObserver.Start();
-            await approvedObserver.Start();
+            await ReceivedObserver.Start();
+            await ApprovedObserver.Start();
         }
     }
 }

@@ -1,0 +1,19 @@
+Sprint 1
+========
+- Hub namespace: 			<globally unique - put your name here>
+- Requests received Hub:		receivedrequests
+- Requests received Listener:		ReceivedRequestsListenerSAP	
+
+
+Sprint 2
+========
+- Auto approval received consumer:	autoapprovalreceivedrequestconsumer
+- Requests received Sender:		ReceivedRequestsListenerSAP
+- Not auto approved requests Hub:	notautoapprovedrequests
+- Decided requests Hub:			decidedrequests
+- Not auto approved Sender:		NotAutoApprovedRequestsSenderSAP
+- Decided requests Sender:		DecidedRequestsSenderSAP
+
+
+Sprint 3
+========
