@@ -3,13 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLogic", "BusinessLogic\BusinessLogic.csproj", "{588ADD0B-8729-4B4C-8AAD-865823478654}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Snippets", "Snippets", "{86B23620-BEB0-411D-9283-B6386B31B19E}"
-	ProjectSection(SolutionItems) = preProject
-		Snippets\AzureResourceNames.txt = Snippets\AzureResourceNames.txt
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProviderTransferService", "ProviderTransferService\ProviderTransferService.csproj", "{77DCE54F-1FCA-4EBE-B407-BA142539D9D6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UI", "UI\UI.csproj", "{A468F586-BB9E-4619-9EE5-D05665304EF6}"
@@ -18,15 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoutingService", "RoutingSe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoApprovalService", "AutoApprovalService\AutoApprovalService.csproj", "{8D57950B-E821-4967-AD46-0E4363133861}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ArmScripts", "ArmScripts", "{3E51AA6C-C905-4EDE-83F2-FE2FCDECEB94}"
-	ProjectSection(SolutionItems) = preProject
-		Sprint1_StorageAccount.json = Sprint1_StorageAccount.json
-		ArmScripts\Sprint1and2EventHubStuff.json = ArmScripts\Sprint1and2EventHubStuff.json
-		ArmScripts\Sprint3_RoutingServiceMessagingItems.json = ArmScripts\Sprint3_RoutingServiceMessagingItems.json
-		Sprint3_StorageAccountItems.json = Sprint3_StorageAccountItems.json
-		ArmScripts\Sprint3_UIMessagingItems.json = ArmScripts\Sprint3_UIMessagingItems.json
-		Sprint4_StorageAccountItems.json = Sprint4_StorageAccountItems.json
-	EndProjectSection
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLogic", "..\BusinessLogic\BusinessLogic.csproj", "{93D28F65-8922-4555-8771-967EFCF67A8E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,10 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{588ADD0B-8729-4B4C-8AAD-865823478654}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{588ADD0B-8729-4B4C-8AAD-865823478654}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{588ADD0B-8729-4B4C-8AAD-865823478654}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{588ADD0B-8729-4B4C-8AAD-865823478654}.Release|Any CPU.Build.0 = Release|Any CPU
 		{77DCE54F-1FCA-4EBE-B407-BA142539D9D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{77DCE54F-1FCA-4EBE-B407-BA142539D9D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77DCE54F-1FCA-4EBE-B407-BA142539D9D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -54,6 +35,10 @@ Global
 		{8D57950B-E821-4967-AD46-0E4363133861}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D57950B-E821-4967-AD46-0E4363133861}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D57950B-E821-4967-AD46-0E4363133861}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93D28F65-8922-4555-8771-967EFCF67A8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93D28F65-8922-4555-8771-967EFCF67A8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93D28F65-8922-4555-8771-967EFCF67A8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93D28F65-8922-4555-8771-967EFCF67A8E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
