@@ -3,30 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLogic", "BusinessLogic\BusinessLogic.csproj", "{588ADD0B-8729-4B4C-8AAD-865823478654}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Snippets", "Snippets", "{86B23620-BEB0-411D-9283-B6386B31B19E}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\..\..\Desktop\Temp\Sprint1\Snippets\AzureResourceNames.txt = ..\..\..\..\Desktop\Temp\Sprint1\Snippets\AzureResourceNames.txt
-		CronScheduleInfo.txt = CronScheduleInfo.txt
-		ReceiveRequestLogic.txt = ReceiveRequestLogic.txt
-		Sprint2.txt = Sprint2.txt
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{381D8630-DEB2-4A61-A9A2-C6E9D403874A}"
-	ProjectSection(SolutionItems) = preProject
-		Docs\EdaWorkshop_Sprint1.pptx = Docs\EdaWorkshop_Sprint1.pptx
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ArmScripts", "ArmScripts", "{96E04BB9-CB8D-4151-9689-50532CA7E350}"
-	ProjectSection(SolutionItems) = preProject
-		Snippets\ArmScripts\Sprint1_StorageAccount.json = Snippets\ArmScripts\Sprint1_StorageAccount.json
-		Snippets\ArmScripts\Sprint1and2EventHubStuff.json = Snippets\ArmScripts\Sprint1and2EventHubStuff.json
-		Snippets\ArmScripts\Sprint3_RoutingServiceMessagingItems.json = Snippets\ArmScripts\Sprint3_RoutingServiceMessagingItems.json
-		Snippets\ArmScripts\Sprint3_StorageAccountItems.json = Snippets\ArmScripts\Sprint3_StorageAccountItems.json
-		Snippets\ArmScripts\Sprint3_UIMessagingItems.json = Snippets\ArmScripts\Sprint3_UIMessagingItems.json
-		Snippets\ArmScripts\Sprint4_StorageAccountItems.json = Snippets\ArmScripts\Sprint4_StorageAccountItems.json
-	EndProjectSection
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLogic", "..\BusinessLogic\BusinessLogic.csproj", "{B1C1146E-BF32-4472-A3B7-C0DDBE8A3416}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,16 +11,13 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{588ADD0B-8729-4B4C-8AAD-865823478654}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{588ADD0B-8729-4B4C-8AAD-865823478654}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{588ADD0B-8729-4B4C-8AAD-865823478654}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{588ADD0B-8729-4B4C-8AAD-865823478654}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1C1146E-BF32-4472-A3B7-C0DDBE8A3416}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1C1146E-BF32-4472-A3B7-C0DDBE8A3416}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1C1146E-BF32-4472-A3B7-C0DDBE8A3416}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1C1146E-BF32-4472-A3B7-C0DDBE8A3416}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{96E04BB9-CB8D-4151-9689-50532CA7E350} = {86B23620-BEB0-411D-9283-B6386B31B19E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {14C1A0B5-D152-464F-AF1A-81DA08E002DD}
