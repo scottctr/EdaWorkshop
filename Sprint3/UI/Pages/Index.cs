@@ -97,6 +97,17 @@ namespace UI.Pages
             }
         }
 
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            await base.OnAfterRenderAsync(firstRender);
+
+            if (firstRender)
+            {
+                await StartListenersAsync();
+                await GetUserDetailsAsync();
+            }
+        }
+
         private async Task StartListenersAsync()
         {
             await _assignedObserver.StartAsync();

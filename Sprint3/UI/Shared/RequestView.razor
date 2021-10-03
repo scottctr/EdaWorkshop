@@ -91,20 +91,20 @@
     {
         Request.Status = Status.Approved;
         await _decisionPublisher.SendDecidedRequestAsync(Request);
-        UpdateRequest(null);
+        await UpdateRequestAsync(null);
     }
 
     private async Task SendDeniedAsync()
     {
         Request.Status = Status.Denied;
         await _decisionPublisher.SendDecidedRequestAsync(Request);
-        UpdateRequest(null);
+        await UpdateRequestAsync(null);
     }
 
-    private void UpdateRequest(RequestForService rfs)
+    private async Task UpdateRequestAsync(RequestForService rfs)
     {
-        Request = null;
-        RequestChanged.InvokeAsync(Request);
-        InvokeAsync(StateHasChanged);
+        Request = rfs;
+        await RequestChanged.InvokeAsync(Request);
+        await InvokeAsync(StateHasChanged);
     }
 }
