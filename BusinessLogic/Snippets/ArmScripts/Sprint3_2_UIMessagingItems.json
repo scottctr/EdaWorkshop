@@ -23,11 +23,11 @@
     {
       "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationRules",
       "apiVersion": "2021-06-01-preview",
-      "name": "[concat(parameters('hub_namespace_name'), '/requestassigned/RequestAssignedSenderSAP')]",
+      "name": "[concat(parameters('hub_namespace_name'), '/requestassigned/RequestAssignedListenerSAP')]",
       "location": "Central US",
       "properties": {
         "rights": [
-          "Send"
+          "Listen"
         ]
       }
     },
@@ -46,6 +46,20 @@
       "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
       "apiVersion": "2021-06-01-preview",
       "name": "[concat(parameters('hub_namespace_name'), '/requestassigned/uirequestassignedconsumer')]",
+      "location": "Central US",
+      "properties": {}
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
+      "apiVersion": "2021-06-01-preview",
+      "name": "[concat(parameters('hub_namespace_name'), '/receivedrequests/uireceivedrequestconsumer')]",
+      "location": "Central US",
+      "properties": {}
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
+      "apiVersion": "2021-06-01-preview",
+      "name": "[concat(parameters('hub_namespace_name'), '/decidedrequests/uirequestdecidedconsumer')]",
       "location": "Central US",
       "properties": {}
     }

@@ -15,7 +15,6 @@ namespace UI
         private static int _totalAutoApproved;
         private static DateTime _startTime = DateTime.Now;
 
-        //!!! need to rethink open statuses
         public static int UndecidedCount => _requests.Count(r => r.Value.Status == Status.Received);
         public static int TotalCount => _requests.Count;
 
@@ -24,8 +23,6 @@ namespace UI
             _requests[rfs.Id] = rfs;
 
             var now = DateTime.Now;
-            //_countsByMinuteReceived.AddOrUpdate(now.Hour * 100 + now.Minute, 1, (key, existingCount) => existingCount + 1);
-            
             var minuteKey = now.Hour * 100 + now.Minute;
 
             if (rfs.Status != Status.AutoApproved)
@@ -67,11 +64,6 @@ namespace UI
         public static List<HourlyCount> GetAllCountsByMinute()
         {
             var hourlyList = new List<HourlyCount>(_countsByMinuteReceived.Count);
-
-            //// Convert to Central time
-            //for(var i = 0; i < 24; i++)
-            //{ hourlyList.Add(new HourlyCount((i + 7) % 24, _countsByMinuteReceived[i])); }
-
             hourlyList.AddRange(_countsByMinuteReceived.Select(kv => new HourlyCount(kv.Key, kv.Value)));
 
             return hourlyList;

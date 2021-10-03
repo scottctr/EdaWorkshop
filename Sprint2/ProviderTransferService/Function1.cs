@@ -3,20 +3,20 @@ using Azure.Messaging.EventHubs.Producer;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Threading.Tasks;
 
-namespace ProviderTransferServiceFunction
+namespace ProviderTransferService
 {
     public static class Function1
     {
-        private static string _connectionString = "!!!";
+        private static string _connectionString = "Endpoint=sb://edaworkshop.servicebus.windows.net/;SharedAccessKeyName=ReceivedRequestsSenderSAP;SharedAccessKey=4tYxKFYxyOVQssqhKBIAWUYko/9k6rPSEuTDOfydBS8=;EntityPath=receivedrequests";
         private static EventHubProducerClient _publisher;
 
-        // For timer trigger syntax, see https://github.com/atifaziz/NCrontab/wiki/Crontab-Expression
-        // "* * * * * *" fires every second
-        // "* * * * *" fires every minute
-        [FunctionName("SendRequestsFunction")]
-        public static async void Run([TimerTrigger("* * * * * *")]TimerInfo myTimer, ILogger log)
+        [FunctionName("Function1")]
+        public static async Task Run([TimerTrigger("* * * * * *")]TimerInfo myTimer, ILogger log)
         {
+            log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
+
             _publisher = new EventHubProducerClient(_connectionString);
 
             var requestList = new System.Collections.Generic.List<EventData>();
@@ -28,6 +28,7 @@ namespace ProviderTransferServiceFunction
             Console.WriteLine("Request received: " + requestJson);
 
             await _publisher.SendAsync(requestList);
+
         }
     }
 }

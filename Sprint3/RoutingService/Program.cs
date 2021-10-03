@@ -17,10 +17,10 @@ namespace RoutingService
     {
         // User specific settings
         private const string BlobStorageConnectionString = "!!!";
-        private const string GetRequestEventHubConnectionString = "!!!";
-        private const string NotAutoApprovedEventHubConnectionString = "!!!";
-        private const string RequestAssignedEventHubConnectionString = "!!!";
-        private const string RequestDecidedEventHubConnectionString = "!!!";
+        private const string GetRequestListenerEventHubConnectionString = "!!!";
+        private const string NotAutoApprovedListenerEventHubConnectionString = "!!!";
+        private const string RequestAssignedSenderEventHubConnectionString = "!!!";
+        private const string RequestDecidedListenerEventHubConnectionString = "!!!";
 
 
         // Should be standard settings, but double check
@@ -37,7 +37,6 @@ namespace RoutingService
         private static EventProcessorClient _getRequestConsumer;
         private static EventProcessorClient _notAutoApprovedConsumer;
         private static EventProcessorClient _requestDecidedConsumer;
-
 
         static async Task Main(string[] args)
         {
@@ -78,11 +77,11 @@ namespace RoutingService
 
         private static async Task getRequestEventHandlerAsync(ProcessEventArgs eventArgs)
         {
+            var eventArgBody = Encoding.UTF8.GetString(eventArgs.Data.Body.ToArray());
+            Console.WriteLine("Received request for request: " + eventArgBody);
+
             if (Requests.TryTake(out var request))
             {
-                var eventArgBody = Encoding.UTF8.GetString(eventArgs.Data.Body.ToArray());
-                Console.WriteLine("Received request for request: " + eventArgBody);
-
                 // Set user name so we know who it's assigned to
                 var getRequestCommand = JsonSerializer.Deserialize<GetRequestForServiceCommand>(eventArgBody);
                 request.AssignedToUser = getRequestCommand?.UserName;
@@ -91,6 +90,10 @@ namespace RoutingService
                 var requestJson = JsonSerializer.Serialize(request);
                 var requestBytes = Encoding.UTF8.GetBytes(requestJson);
                 await _requestAssignedPublisher.SendAsync(new List<EventData>{ new (new BinaryData(requestBytes)) });
+            }
+            else
+            {
+                Console.WriteLine("No request available for: " + eventArgBody);
             }
         }
 
@@ -102,7 +105,7 @@ namespace RoutingService
 
         private static void initializeRequestAssignedProducer()
         {
-            _requestAssignedPublisher = new EventHubProducerClient(RequestAssignedEventHubConnectionString);
+            _requestAssignedPublisher = new EventHubProducerClient(RequestAssignedSenderEventHubConnectionString);
         }
 
         private static Task notAutoApprovedErrorHandlerAsync(ProcessErrorEventArgs eventArgs)
@@ -152,7 +155,7 @@ namespace RoutingService
         private static async Task startGetRequestConsumer(CancellationTokenSource cancellationSource)
         {
             var storageClient = new BlobContainerClient(BlobStorageConnectionString, GetRequestBlobContainerName);
-            _getRequestConsumer = new EventProcessorClient(storageClient, GetRequestConsumerGroup, GetRequestEventHubConnectionString); //!!!, GetRequestEventHubName);
+            _getRequestConsumer = new EventProcessorClient(storageClient, GetRequestConsumerGroup, GetRequestListenerEventHubConnectionString);
 
             _getRequestConsumer.ProcessEventAsync += getRequestEventHandlerAsync;
             _getRequestConsumer.ProcessErrorAsync += getRequestErrorHandlerAsync;
@@ -163,7 +166,7 @@ namespace RoutingService
         private static async Task startNotAutoApprovedConsumer(CancellationTokenSource cancellationSource)
         {
             var storageClient = new BlobContainerClient(BlobStorageConnectionString, NotAutoApprovedBlobContainerName);
-            _notAutoApprovedConsumer = new EventProcessorClient(storageClient, NotAutoApprovedConsumerGroup, NotAutoApprovedEventHubConnectionString); //!!!, NotAutoApprovedEventHubName);
+            _notAutoApprovedConsumer = new EventProcessorClient(storageClient, NotAutoApprovedConsumerGroup, NotAutoApprovedListenerEventHubConnectionString);
 
             _notAutoApprovedConsumer.ProcessEventAsync += notAutoApprovedEventHandlerAsync;
             _notAutoApprovedConsumer.ProcessErrorAsync += notAutoApprovedErrorHandlerAsync;
@@ -174,7 +177,7 @@ namespace RoutingService
         private static async Task startRequestDecidedConsumer(CancellationTokenSource cancellationSource)
         {
             var storageClient = new BlobContainerClient(BlobStorageConnectionString, RequestDecidedBlobContainerName);
-            _requestDecidedConsumer = new EventProcessorClient(storageClient, RequestDecidedConsumerGroup, RequestDecidedEventHubConnectionString); //!!!???, RequestDecidedEventHubName);
+            _requestDecidedConsumer = new EventProcessorClient(storageClient, RequestDecidedConsumerGroup, RequestDecidedListenerEventHubConnectionString);
 
             _requestDecidedConsumer.ProcessEventAsync += requestDecidedEventHandlerAsync;
             _requestDecidedConsumer.ProcessErrorAsync += requestDecidedErrorHandlerAsync;

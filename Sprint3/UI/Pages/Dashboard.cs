@@ -10,7 +10,6 @@ namespace UI.Pages
     {
         private Timer _timer;
         private int Index = -1; //default value cannot be 0 -> first selectedindex is 0.
-        int dataSize = 2;
         string[] labels = { "Undecided", "Auto Approved" };
         private List<ChartSeries> _series;
         private string[] _xAxisLabels;
