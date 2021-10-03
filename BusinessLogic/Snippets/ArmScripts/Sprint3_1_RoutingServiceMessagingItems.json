@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "hub_namespace_name": {
-      "defaultValue": "edaworkshophubnamespace",
+      "defaultValue": "edaworkshop",
       "type": "String"
     }
   },

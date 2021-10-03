@@ -52,6 +52,17 @@
         "denyEncryptionScopeOverride": false,
         "publicAccess": "Container"
       }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2021-04-01",
+      "name": "[concat(parameters('storageAcountName'), '/default/uirequestdecidedconsumer')]",
+      "dependsOn": [],
+      "properties": {
+        "defaultEncryptionScope": "$account-encryption-key",
+        "denyEncryptionScopeOverride": false,
+        "publicAccess": "Container"
+      }
     }
   ]
 }
