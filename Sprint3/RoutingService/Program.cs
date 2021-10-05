@@ -25,10 +25,10 @@ namespace RoutingService
 
         // Should be standard settings, but double check
         private const string GetRequestBlobContainerName = "routinggetrequestconsumer";
-        private const string GetRequestConsumerGroup = "routinggetconsumer";
         private const string NotAutoApprovedBlobContainerName = "routingnotautoapprovedconsumer";
-        private const string NotAutoApprovedConsumerGroup = "routingnotautoapprovedconsumer";
         private const string RequestDecidedBlobContainerName = "routingrequestdecidedconsumer";
+        private const string GetRequestConsumerGroup = "routinggetconsumer";
+        private const string NotAutoApprovedConsumerGroup = "routingnotautoapprovedconsumer";
         private const string RequestDecidedConsumerGroup = "routingrequestdecidedconsumer";
 
         // Private fields
