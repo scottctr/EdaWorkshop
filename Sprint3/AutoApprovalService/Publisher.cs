@@ -11,8 +11,8 @@ namespace AutoApprovalService
     {
         private static string _approvedConnectionString = "!!!";
         private static string _notApprovedConnectionString = "!!!";
-        private static readonly EventHubProducerClient _approvedPublisher;
-        private static readonly EventHubProducerClient _notApprovedPublisher;
+        private static EventHubProducerClient _approvedPublisher;
+        private static EventHubProducerClient _notApprovedPublisher;
 
         static Publisher()
         {

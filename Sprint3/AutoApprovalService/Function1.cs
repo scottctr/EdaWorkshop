@@ -1,3 +1,4 @@
+using BusinessLogic;
 using Microsoft.Azure.EventHubs;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Logging;
@@ -5,16 +6,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace AutoApprovalService
 {
     public static class Function1
     {
-        private static readonly Random _randomizer = new Random();
-
         [FunctionName("Function1")]
-        public static async Task Run([EventHubTrigger("requestreceived", Connection = "EventHubListenerConnString", ConsumerGroup = "autoapprovalreceivedrequestsconsumer")] EventData[] events, ILogger log)
+        public static async Task Run([EventHubTrigger("!!!", Connection = "ReceivedRequestsConnectionString", ConsumerGroup = "autoapprovalreceivedrequestsconsumer")] EventData[] events, ILogger log)
         {
             var exceptions = new List<Exception>();
 
@@ -24,19 +24,21 @@ namespace AutoApprovalService
                 {
                     string messageBody = Encoding.UTF8.GetString(eventData.Body.Array, eventData.Body.Offset, eventData.Body.Count);
 
-                    if (_randomizer.Next(0, 2) == 1)
+                    if (AutoEvaluator.Approve())
                     {
-                        //Mark it as auto approved
-                        messageBody = messageBody.Replace(",\"Status\":0}", ",\"Status\":4}");
+                        var rfs = JsonSerializer.Deserialize<RequestForService>(messageBody);
+                        rfs.Status = Status.AutoApproved;
+                        messageBody = JsonSerializer.Serialize(rfs);
 
                         await Publisher.SendApprovalAsync(messageBody);
-                        log.LogInformation($"Message approved: {messageBody}");
+                        log.LogInformation($"Request approved: {messageBody}");
                     }
                     else
                     {
                         await Publisher.SendNonApprovalAsync(messageBody);
-                        log.LogInformation($"Message not approved: {messageBody}");
+                        log.LogInformation($"Request not approved: {messageBody}");
                     }
+
                     log.LogInformation($"C# Event Hub trigger function processed a message: {messageBody}");
                     await Task.Yield();
                 }
