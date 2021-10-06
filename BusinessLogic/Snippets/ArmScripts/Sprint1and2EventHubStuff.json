@@ -195,7 +195,7 @@
     {
       "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
       "apiVersion": "2021-06-01-preview",
-      "name": "[concat(parameters('hub_namespace_name'), '/receivedrequests/autoapprovalreceivedrequestconsumer')]",
+      "name": "[concat(parameters('hub_namespace_name'), '/receivedrequests/autoapprovalreceivedrequestsconsumer')]",
       "location": "Central US",
       "dependsOn": [
         "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('hub_namespace_name'), 'receivedrequests')]",

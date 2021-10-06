@@ -14,7 +14,7 @@ namespace AutoApprovalService
         private static readonly Random _randomizer = new Random();
 
         [FunctionName("Function1")]
-        public static async Task Run([EventHubTrigger("requestreceived", Connection = "EventHubListenerConnString", ConsumerGroup = "autoapprovalreceivedrequestconsumer")] EventData[] events, ILogger log)
+        public static async Task Run([EventHubTrigger("requestreceived", Connection = "EventHubListenerConnString", ConsumerGroup = "autoapprovalreceivedrequestsconsumer")] EventData[] events, ILogger log)
         {
             var exceptions = new List<Exception>();
 

@@ -7,7 +7,7 @@ Sprint 1
 
 Sprint 2
 ========
-- Auto approval received consumer:	autoapprovalreceivedrequestconsumer
+- Auto approval received consumer:	autoapprovalreceivedrequestsconsumer
 - Requests received Listener:		ReceivedRequestsListenerSAP
 - Not auto approved requests Hub:	notautoapprovedrequests
 - Decided requests Hub:				decidedrequests
