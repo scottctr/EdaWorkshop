@@ -9,7 +9,7 @@ namespace ProviderTransferService
 {
     public static class Function1
     {
-        private static string _connectionString = "Endpoint=sb://edaworkshop.servicebus.windows.net/;SharedAccessKeyName=ReceivedRequestsSenderSAP;SharedAccessKey=4tYxKFYxyOVQssqhKBIAWUYko/9k6rPSEuTDOfydBS8=;EntityPath=receivedrequests";
+        private static string _connectionString = "!!!";
         private static EventHubProducerClient _publisher;
 
         [FunctionName("Function1")]
@@ -28,7 +28,6 @@ namespace ProviderTransferService
             Console.WriteLine("Request received: " + requestJson);
 
             await _publisher.SendAsync(requestList);
-
         }
     }
 }
